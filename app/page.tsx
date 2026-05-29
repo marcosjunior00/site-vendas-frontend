@@ -1,6 +1,8 @@
 "use client";
 
+import Link from "next/link";
 import { useRef, useState } from "react";
+import { products } from "@/lib/products";
 
 function ChevronLeftIcon() {
   return (
@@ -100,82 +102,6 @@ function ImagePlaceholderIcon() {
     </svg>
   );
 }
-
-const products = [
-  {
-    id: "aurora-headset",
-    name: "Headset Aurora Pro",
-    category: "Eletrônicos",
-    description:
-      "Áudio imersivo com cancelamento de ruído e bateria de longa duração.",
-    price: 489.9,
-    previewTone: "from-sky-500/20 to-sky-700/10",
-  },
-  {
-    id: "pulse-watch",
-    name: "Smartwatch Pulse One",
-    category: "Wearables",
-    description: "Monitoramento de saúde, GPS integrado e acabamento leve.",
-    price: 699.9,
-    previewTone: "from-cyan-500/20 to-cyan-700/10",
-  },
-  {
-    id: "linen-chair",
-    name: "Poltrona Linen",
-    category: "Casa",
-    description: "Poltrona compacta com tecido premium e estrutura em madeira.",
-    price: 1290,
-    previewTone: "from-stone-400/25 to-stone-700/10",
-  },
-  {
-    id: "brew-station",
-    name: "Cafeteira Brew Station",
-    category: "Cozinha",
-    description: "Programação automática e jarra térmica para o café do dia.",
-    price: 359.9,
-    previewTone: "from-amber-500/20 to-amber-700/10",
-  },
-  {
-    id: "studio-lamp",
-    name: "Luminária Studio Beam",
-    category: "Decoração",
-    description: "Luz ajustável com três temperaturas de cor para mesa ou quarto.",
-    price: 219.9,
-    previewTone: "from-yellow-500/20 to-yellow-700/10",
-  },
-  {
-    id: "urban-pack",
-    name: "Mochila Urban Pack",
-    category: "Lifestyle",
-    description: "Mochila resistente à água com compartimentos internos organizados.",
-    price: 279.9,
-    previewTone: "from-violet-500/20 to-violet-700/10",
-  },
-  {
-    id: "glass-bottle",
-    name: "Garrafa Térmica Glass",
-    category: "Cozinha",
-    description: "Mantém a temperatura por horas com acabamento fosco e tampa segura.",
-    price: 149.9,
-    previewTone: "from-emerald-500/20 to-emerald-700/10",
-  },
-  {
-    id: "desk-stand",
-    name: "Suporte Desk Stand",
-    category: "Acessórios",
-    description: "Base para notebook em alumínio com ajuste confortável para uso diário.",
-    price: 189.9,
-    previewTone: "from-slate-500/20 to-slate-700/10",
-  },
-  {
-    id: "flow-keyboard",
-    name: "Teclado Flow Keys",
-    category: "Eletrônicos",
-    description: "Teclado compacto com conexão sem fio e digitação silenciosa.",
-    price: 329.9,
-    previewTone: "from-blue-500/20 to-blue-700/10",
-  },
-] as const;
 
 const ITEMS_PER_PAGE = 4;
 const PAGE_NEIGHBORS = 1;
@@ -324,7 +250,7 @@ export default function Home() {
                     <ImagePlaceholderIcon />
                   </div>
 
-                  <div className="space-y-1">
+                  <div className="space-y-2">
                     <p className="text-xs uppercase tracking-[0.18em] text-foreground/45">
                       {product.category}
                     </p>
@@ -334,6 +260,12 @@ export default function Home() {
                     <p className="max-w-2xl text-sm leading-6 text-foreground/65">
                       {product.description}
                     </p>
+                    <Link
+                      className="inline-flex text-sm font-medium text-accent-strong transition hover:text-white"
+                      href={`/products/details/${product.id}`}
+                    >
+                      Ver produto
+                    </Link>
                   </div>
                 </div>
 
